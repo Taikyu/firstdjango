@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+{% extends 'musicapp/base.html' %} {% block content %} {% for artiste in
+object_list %}
+<div class="post-entry">
+  <h2><a href="">{{ Artiste.stage_name }}</a></h2>
+  <p>{{ Artiste.song }}</p>
+  <h2>{{ data }}</h2>
+</div>
+
+{% endfor %} {% endblock %}
