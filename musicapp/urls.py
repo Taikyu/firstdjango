@@ -2,23 +2,19 @@
 from django.contrib import admin
 from django.urls import path
 
-from musicapp import views
-
-from .views import artiste_list, artiste_details
-from .apiviews import ArtisteList, ArtisteDetail, ArtisteCreateView, ArtisteUpdateView, ArtisteDeleteView, SongList, SongDetail
+from . import views
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    # path('artistes/', views.artiste_list, name='artiste_list'),
-    # path('artistes/<int:pk>', views.artiste_details, name='artiste_details'),
-    path('artiste/', ArtisteList.as_view(), name='artiste_list'),
-    path('artiste/create/', ArtisteCreateView.as_view(), name='artiste_create'),
-    path('artiste/<str:pk>/', ArtisteDetail.as_view(), name='artiste_details'),
-    path('artiste/song', SongList.as_view(), name='song_list'),
-    path('artiste/song/<str:pk>/', SongDetail.as_view(), name='song_details'),
-    # path('artiste/create/', ArtisteCreateView.as_view(), name='artiste_new'),
-    path('artiste/<str:pk>/edit/', ArtisteUpdateView.as_view(), name='artiste_edit'),
-    path('artiste/<str:pk>/delete',
-         ArtisteDeleteView.as_view(), name='artiste_delete')
+    path('', views.apiOverview, name='api-overview'),
+    path('artiste-list/', views.artisteList, name='artiste-list'),
+    path('artiste-detail/<str:pk>/', views.artisteDetail, name='artiste-detail'),
+    path('artiste-create/', views.artisteCreate, name='artiste-create'),
+    path('artiste-update/<str:pk>', views.artisteUpdate, name='artiste-update'),
+    path('artiste-delete/<str:pk>', views.artisteDelete, name='artiste-delete'),
+    path('song-list/', views.songList, name='song-list'),
+    path('song-detail/<str:pk>/', views.songDetail, name='song-detail'),
+    path('song-create/', views.songCreate, name='song-create'),
+    path('song-update/<str:pk>/', views.songUpdate, name='song-update'),
+    path('song-delete/<str:pk>/', views.songDelete, name='song-delete'),
 ]
